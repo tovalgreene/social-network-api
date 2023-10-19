@@ -1,11 +1,11 @@
-const Thought = require('../models/Thought.js');
-const User = require('../models/User.js');
+import Thought from '../models/Thought.js';
+import User from '../models/User.js';
 
 const thoughtController = {
   getAllThoughts(req, res) {
     Thought.find({})
       .select('-__v')
-      .sort({ createdAt: -1 }) 
+      .sort({ createdAt: -1 })
       .then((dbThoughtData) => res.json(dbThoughtData))
       .catch((err) => res.status(500).json(err));
   },
@@ -79,6 +79,7 @@ const thoughtController = {
       })
       .catch((err) => res.status(400).json(err));
   },
+
   deleteReaction({ params }, res) {
     Thought.findOneAndUpdate(
       { _id: params.thoughtId },
@@ -95,7 +96,17 @@ const thoughtController = {
   },
 };
 
-module.exports = thoughtController;
+const createReaction = thoughtController.createReaction;
+const createThought = thoughtController.createThought;
+const deleteReaction = thoughtController.deleteReaction;
+const getAllThoughts = thoughtController.getAllThoughts;
+const getThoughtById = thoughtController.getThoughtById;
+const updateThought = thoughtController.updateThought;
+const deleteThought = thoughtController.deleteThought;
+
+export { createThought, deleteReaction, getAllThoughts, getThoughtById, updateThought, deleteThought, createReaction };
+
+export default thoughtController;
 
 
 

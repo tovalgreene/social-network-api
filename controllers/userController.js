@@ -5,7 +5,7 @@ const userController = {
     User.find({})
       .populate({
         path: 'thoughts',
-        select: '-__v', 
+        select: '-__v',
       })
       .populate({
         path: 'friends',
@@ -98,6 +98,15 @@ const userController = {
       .catch((err) => res.status(400).json(err));
   },
 };
-export { addFriend };
 
+const addFriend = userController.addFriend;
+const createUser = userController.createUser;
+const deleteUser = userController.deleteUser;
+const getAllUsers = userController.getAllUsers;
+const getUserById = userController.getUserById;
+const removeFriend = userController.removeFriend;
+const updateUser = userController.updateUser;
+const createReaction = userController.createReaction;
+
+export { addFriend, createUser, deleteUser, getAllUsers, getUserById, removeFriend, updateUser, createReaction };
 export default userController;

@@ -1,11 +1,11 @@
-import mongoose, { Types } from 'mongoose';
+import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const reactionSchema = new Schema(
   {
     reactionId: {
       type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
+      default: () => new mongoose.Types.ObjectId(),
     },
     reactionBody: {
       type: String,
@@ -28,4 +28,6 @@ const reactionSchema = new Schema(
   }
 );
 
-export default Reaction;
+const Reaction = mongoose.model('Reaction', reactionSchema);
+
+export { reactionSchema, Reaction };

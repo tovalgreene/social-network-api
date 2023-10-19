@@ -1,5 +1,5 @@
 import express from 'express';
-import { connect } from 'mongoose';
+import mongoose from 'mongoose';
 import userRoutes from './routes/userRoutes.js';
 import thoughtRoutes from './routes/thoughtRoutes.js';
 import reactionRoutes from './routes/reactionRoutes.js';
@@ -7,11 +7,9 @@ import reactionRoutes from './routes/reactionRoutes.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-connect('mongodb://localhost/social-network', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/social-network', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
 });
 
 app.use('/api/users', userRoutes);

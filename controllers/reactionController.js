@@ -32,4 +32,7 @@ const reactionController = {
   },
 };
 
+const createReaction = reactionController.createReaction;
+const deleteReaction = reactionController.deleteReaction;
+export { createReaction, deleteReaction };
 export default reactionController;

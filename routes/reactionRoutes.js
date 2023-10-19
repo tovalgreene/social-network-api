@@ -7,4 +7,4 @@ router.route('/reactions').post(createReaction);
 
 router.route('/reactions/:reactionId').delete(deleteReaction);
 
-export default router;
+export default Router;
